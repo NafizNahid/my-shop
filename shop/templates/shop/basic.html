@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>{% block title%} {% endblock %}</title>
+     <style>
+       {% block css %} {% endblock %}
+  </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">My Awesome Cart</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/shop">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/shop/about">About Us</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/shop/tracker">Tracker</a>
+      </li>
+
+       <li class="nav-item">
+        <a class="nav-link" href="/shop/contact">Contact Us</a>
+      </li>
+
+
+    </ul>
+    <form method="get" action='/shop/search/' class="form-inline my-2 my-lg-0">
+      <input id="search" class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-info mr-5 my-2 my-sm-0" type="submit">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 16 16">
+          <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
+          <path d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
+        </svg>
+      </button>
+    </form>
+  
+    <button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus.">
+
+
+  Cart(<span id="cart">0</span>)
+</button>
+<a href="{% url 'admin:index' %}" target = "blank" class="btn btn-warning mx-3 rounded-pill"><b>Admin</b></a>
+
+{% if user.is_authenticated %}
+            <h6 class="text-light">Hi, {{user.username}}</h6>
+          <a href="" class="btn btn-danger mx-3">Log out</a>
+          {% else %}
+            <a href="" class="btn btn-outline-primary mr-2">Login</a>
+            <a href="" class="btn btn-primary mr-3">Sign Up</a>
+          {% endif %}
+
+  </div>
+</nav>
+  {% block body %} {% endblock %}
+
+  <div class="row mt-5 p-5 bg-dark text-light d-flex justify-content-center align-items-center">
+    <div class="col-md-3">
+        <h4>About</h4>
+        <br>
+        <h6>Shops</h6>
+        <h6>Seller</h6>
+        <h6>Production</h6>
+        <h6>info</h6>
+        <h6>Investor Relations</h6>
+    </div>
+    <div class="col-md-3">
+        <h4>Policies</h4>
+        <br>
+        <h6>Shipping Rates & Policies</h6>
+        <h6>Shop with Points</h6>
+        <h6>Reload Your Balance</h6>
+        <h6>Notice</h6>
+        <h6>Cookies</h6>
+    </div>
+    <div class="col-md-3">
+        <h4>Contact</h4>
+        <br>
+        <h6>Your account</h6>
+        <h6>Assistant</h6>
+        <h6>Oders details</h6>
+        <h6>Returns & Replacements</h6>
+        <h6>Security</h6>
+        
+    </div>
+    <div class="col-md-3">
+        <h4>More</h4>
+        <br>
+        <h6>Manage Your Content and Devices</h6>
+        <h6>Currency Converter</h6>
+        <h6>Become an Affiliate</h6>
+        <h6>Self-Publish with Us</h6>
+        <h6>Help</h6>
+    </div>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    {% block js %} {% endblock %}
+  </body>
+</html>
